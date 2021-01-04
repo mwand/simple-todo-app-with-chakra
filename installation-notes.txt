@@ -1,0 +1,23 @@
+time npx create-react-app todo-chakra --template @chakra-ui/typescript
+real    3m20.073s
+
+cd todo-chakra
+time npm i @chakra-ui/react @emotion/react @emotion/styled framer-motion
+real    0m34.760s
+
+
+what, no --save??
+
+npm install --save react-hook-form
+
+
+Sun Jan  3 21:36:24 2021:
+
+working except:
+
+still can't figure out how to clear the submit form.
+items in task list are displayed in extra-wide <td> elements.
+haven't grokked overall visual appearance.
+"striped" table doesn't work as advertised.
+
+
