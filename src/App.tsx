@@ -19,11 +19,12 @@ type Task = { id: number, description: string }
 
 export default function App() {
 
-  const { handleSubmit, errors, register, formState } = useForm();
+  const { handleSubmit, formState, reset, register } = useForm();
   const [count, setCount] = React.useState<number>(0)
   const [tasks, setTasks] = React.useState<Task[]>([])
 
   function onSubmit(values: { name: string }) {
+    reset()    // this has to go first; I don't know why.
     setCount(count + 1)  // doesn't take effect immediately!
     setTasks(tasks.concat({ id: count, description: values.name }))
   }
@@ -37,8 +38,8 @@ export default function App() {
     }
     return (
       <Tr>
-        <Td width="200px">{t.id}</Td>
-        <Td>{t.description}</Td>
+        <Td width="200px">{t.description}</Td>
+        <Td>{t.id}</Td>
         <Td> <Button width="60px" size="md" onClick={deleteThisTask}>Delete</Button> </Td>
       </Tr>
     )
@@ -50,7 +51,8 @@ export default function App() {
       <div>
         <Text size="md">My Tasks:</Text>
         <Table size="sm" variant="striped" colorScheme="teal">
-          <Th><Td>Id</Td><Td>Description</Td></Th>
+          <Th><Td width="700px">Description</Td>
+          <Td>Id</Td></Th>
           {tasks.map(renderTask)}
         </Table>
       </div>
@@ -66,7 +68,7 @@ export default function App() {
           <Input
             name="name"
             placeholder="new task"
-            ref={register}
+            ref = {register}
             width="80%"
           />
           <Button mt={0} colorScheme="teal" isLoading={formState.isSubmitting} type="submit">
