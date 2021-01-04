@@ -1,12 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import App from "./App";
+// filename needn't match component name.
+import ToDoApp from "./App";
 
 const rootElement = document.getElementById("root");
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <ToDoApp />
   </React.StrictMode>,
   rootElement
 );
